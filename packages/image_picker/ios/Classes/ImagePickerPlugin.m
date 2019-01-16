@@ -231,6 +231,7 @@ static const int SOURCE_GALLERY = 1;
 
 - (void)imagePickerController:(UIImagePickerController *)picker
     didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
+    if (!_result) return;
   NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
   [_imagePickerController dismissViewControllerAnimated:YES completion:nil];
   // The method dismissViewControllerAnimated does not immediately prevent
