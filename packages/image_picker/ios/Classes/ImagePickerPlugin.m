@@ -126,6 +126,7 @@ static const int SOURCE_GALLERY = 1;
 
 - (void)imagePickerController:(UIImagePickerController *)picker
     didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
+    if (!_result) return;
   NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
   UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
   [_imagePickerController dismissViewControllerAnimated:YES completion:nil];
