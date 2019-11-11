@@ -84,7 +84,6 @@ class AppStoreConnection implements InAppPurchaseConnection {
           await _observer.getRestoredTransactions(
               queue: _skPaymentQueueWrapper,
               applicationUserName: applicationUserName);
-      _observer.cleanUpRestoredTransactions();
       pastPurchases =
           restoredTransactions.map((SKPaymentTransactionWrapper transaction) {
         assert(transaction.transactionState ==
@@ -114,6 +113,7 @@ class AppStoreConnection implements InAppPurchaseConnection {
           message: e.domain,
           details: e.userInfo);
     }
+    _observer.cleanUpRestoredTransactions();
     return QueryPurchaseDetailsResponse(
         pastPurchases: pastPurchases, error: error);
   }
